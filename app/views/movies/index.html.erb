@@ -16,7 +16,7 @@
 
   <tbody>
     <% @movies.each do |movie| %>
-      <tr>
+      <tr id="<%= dom_id(movie) %>">
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
         <td><%= movie.director.name %></td>
