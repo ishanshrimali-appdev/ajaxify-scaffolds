@@ -1,0 +1,8 @@
+$("#<%= dom_id(@movie)%>_<%=@attribute %>").replaceWith("<%= j(render "movies/form", movie: @movie) %>");
+
+$("div").hide();
+// I think this only works because there are no other divs on the page
+
+$("#<%= dom_id(@movie) %>_<%=@attribute%>_form").show();
+
+$("label").hide();

@@ -17,14 +17,27 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr id="<%= dom_id(movie) %>">
-        <td><%= movie.title %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.director.name %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.duration %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <td id="<%= dom_id(movie) %>_title">
+          <%= link_to movie.title, edit_movie_path(id: movie.id, attribute: "title"), remote: true %>
+        </td>
+        <td id="<%= dom_id(movie) %>_year">
+          <%= link_to movie.year, edit_movie_path(id: movie.id, attribute: "year"), remote: true %>
+        </td>
+        <td id="<%= dom_id(movie) %>_director">
+          <%= link_to movie.director.name, edit_movie_path(id: movie.id, attribute: "director"), remote: true %>
+        </td>
+        <td id="<%= dom_id(movie) %>_description">
+          <%= link_to movie.description, edit_movie_path(id: movie.id, attribute: "description"), remote: true %>
+        </td>
+        <td id="<%= dom_id(movie) %>_duration">
+          <%= link_to movie.duration, edit_movie_path(id: movie.id, attribute: "duration"), remote: true %>
+        </td>
+        <td>
+          <%= link_to 'Show', movie %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        </td>
       </tr>
     <% end %>
   </tbody>

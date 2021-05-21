@@ -17,6 +17,13 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+    respond_to do |format|
+      @attribute = params[:attribute]
+      format.js
+      # can I get away without an HTML template?
+      # can I get away without enclosing this in a block?
+        # it appears not.
+    end
   end
 
   # POST /movies or /movies.json
