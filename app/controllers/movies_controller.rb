@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
   def edit
     respond_to do |format|
       @attribute = params[:attribute]
+      format.html
       format.js
       # can I get away without an HTML template?
       # can I get away without enclosing this in a block?
@@ -34,6 +35,7 @@ class MoviesController < ApplicationController
       if @movie.save
         format.html { redirect_to @movie, notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }

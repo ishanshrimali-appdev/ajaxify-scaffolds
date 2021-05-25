@@ -1,8 +1,51 @@
-$("#<%= dom_id(@movie)%>_<%=@attribute %>").replaceWith("<%= j(render "movies/form", movie: @movie) %>");
+$("#<%= dom_id(@movie)%>_<%=@attribute %>").replaceWith("<%= j(render "movies/form", movie: @movie, attribute: @attribute) %>");
 
-$("div").hide();
-// I think this only works because there are no other divs on the page
 
-$("#<%= dom_id(@movie) %>_<%=@attribute%>_form").show();
 
-$("label").hide();
+
+<% if @attribute == "title"%>
+  $("#<%= dom_id(@movie) %>_year_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_director_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_description_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_duration_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_image_form_<%=@attribute%>").hide();  
+<% elsif @attribute == "year"%>
+  $("#<%= dom_id(@movie) %>_title_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_director_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_description_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_duration_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_image_form_<%=@attribute%>").hide();  
+<% elsif @attribute == "director"%>
+  $("#<%= dom_id(@movie) %>_title_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_year_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_description_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_duration_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_image_form_<%=@attribute%>").hide();  
+<% elsif @attribute == "description"%>
+  $("#<%= dom_id(@movie) %>_year_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_director_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_title_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_duration_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_image_form_<%=@attribute%>").hide();  
+<% elsif @attribute == "duration"%>
+  $("#<%= dom_id(@movie) %>_year_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_director_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_description_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_title_form_<%=@attribute%>").hide();
+  $("#<%= dom_id(@movie) %>_image_form_<%=@attribute%>").hide();  
+<% else %>
+<% end %>
+
+
+
+
+
+
+$(document).ready(() => {});
+        $("#<%= dom_id(@movie)%>").keypress((e) => {
+            if (e.which === 13) {
+                $("#<%= dom_id(@movie)%>").submit();
+                alert('Form submitted successfully.')
+                console.log("#<%= dom_id(@movie)%>")
+            }
+        })
